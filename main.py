@@ -1,16 +1,56 @@
-# This is a sample Python script.
+# Digital Divide application
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import dash_leaflet as dl
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+app = dash.Dash(__name__)
+server = app.server
 
+app.layout = html.Div(
+    className='App',
+    children=[
+        html.Header([
+            html.H1('Digital Divide')
+        ]),
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+        html.Div(
+            className='Body',
+            children=[
+                html.Div(
+                    className='Operations',
+                    children=[
+                        dcc.Dropdown(
+                            id='dd_neighborhoods',
+                            options=[
+                                {'label': 'Azalea Park', 'value': 'AzaPar'}
+                            ],
+                            value='AzaPar'
+                        )
+                    ]
+                ),
 
+                html.Div(
+                    className='View',
+                    children=[
+                        dl.Map(
+                            id='dl_geojson',
+                            center={'lat': 28.5383, 'lon': -81.3792},
+                            zoom=10,
+                            children=[
+                                dl.TileLayer()
+                            ]
+                        )
+                    ]
+                )
+            ]
+        ),
 
-# Press the green button in the gutter to run the script.
+        html.Footer([
+            html.P('Created by the Magnificent 7')
+        ])
+    ]
+)
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    app.run_server()

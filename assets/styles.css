@@ -1,0 +1,43 @@
+body {
+    background-color: gray;
+    background: url(/assets/bg.png) no-repeat center fixed;
+    background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -webkit-background-size: cover;
+    font-family: arial;
+}
+
+Header {
+    color: white;
+    text-align: center;
+}
+
+.Body {
+    width: 100%;
+}
+
+.Operations {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
+}
+
+Footer {
+    color: white;
+    text-align: right;
+}
+
+#dd_neighborhoods {
+    width: 275px;
+}
+
+.View {
+    background-color: hotpink;
+    height: 75vh;
+}
+
+#dl_geojson {
+    height: 100%;
+}
