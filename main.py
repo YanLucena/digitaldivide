@@ -52,7 +52,7 @@ app.layout = html.Div(
             className='View',
             children=[
     dl.Map(children=[dl.TileLayer(url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png")] + [geojson],
-           style={'width': "100%", 'height': "100%"}, center=[28.4845, -81.2519], zoom=11, id="map", maxZoom=18),
+           style={'width': "100%", 'height': "100%"}, center=[28.4845, -81.2519], zoom=11, id="map", maxZoom=18, dragmode=False),
 ], style={'width': '75%', 'height': '75vh', 'margin': "auto", "display": "block"} 
         ),
         html.Footer([
