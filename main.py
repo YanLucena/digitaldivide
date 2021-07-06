@@ -23,8 +23,8 @@ def get_style(d):
 # Bind per-feature style information.
 featureOptions = {}
 for item in OrlandoData["features"]:
-    featureOptions[item["id"]] = dict(style=get_style(item["properties"]["NeighID"]),
-                                      popupContent="{:.3f} people/mi2".format(item["properties"]["NeighID"]))
+    featureOptions[item["id"]] = dict(style=get_style(item["properties"]["NeighID"]["NeighName"]),
+                                      popupContent="{:.3f} people/mi2".format(item["properties"]["NeighID"]["NeighName"]))
 # Create geojson.
 options = dict(hoverStyle=dict(weight=5, color='#666', dashArray=''), zoomToBoundsOnClick=True)
 geojson = dl.GeoJSON(data=OrlandoData, id="geojson", options=options)
