@@ -6,7 +6,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_leaflet as dl
 import geojson as gs
-
 app = Dash(__name__)
 server = app.server
 with open("orlando.geojson", 'r') as f:
@@ -19,16 +18,14 @@ def get_color(d):
             return color_limits[key]
 def get_style(d):
     return dict(fillColor=get_color(d), weight=2, opacity=1, color='white', dashArray='3', fillOpacity=0.7)
-
 # Bind per-feature style information.
 featureOptions = {}
 for item in OrlandoData["features"]:
-    featureOptions[item["id"]] = dict(style=get_style(item["properties"]["NeighID"]["NeighName"]),
-                                      popupContent="{:.3f} people/mi2".format(item["properties"]["NeighID"]["NeighName"]))
+    featureOptions[item["id"]] = dict(style=get_style(item["properties"]["NeighID"]),
+                                      popupContent="{:.3f} people/mi2".format(item["properties"]["NeighID"]))
 # Create geojson.
 options = dict(hoverStyle=dict(weight=5, color='#666', dashArray=''), zoomToBoundsOnClick=True)
 geojson = dl.GeoJSON(data=OrlandoData, id="geojson", options=options)
-
 # Create app.
 app.layout = html.Div(
     className='App',
